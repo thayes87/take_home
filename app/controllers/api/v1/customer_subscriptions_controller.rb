@@ -9,13 +9,15 @@ class Api::V1::CustomerSubscriptionsController < ApplicationController
   end
   
   def destroy
-    customer_subscription = CustomerSubscription.find(customer_subscription_params[:id])
+    customer_subscription = CustomerSubscription.find(params[:id])
     if customer_subscription.present?
       customer_subscription.destroy
-      render :json => { status: 200 }, :status => :success
+      render :json => { status: 200 }
     else
       render :json => { error: "No record found", status: 400 }, :status => :bad_request
     end
+  rescue ActiveRecord::RecordNotFound
+    render :json => { error: "No record found", status: 400 }, :status => :bad_request
   end
 
   private

@@ -10,13 +10,11 @@ RSpec.describe 'delete customer subscription' do
       
       expect(CustomerSubscription.count).to eq(1)
 
-      params = {
-        id: customer_subscription.id
-      }
-      
-      headers = { 'CONTENT_TYPE' => 'application/json' }
-      
-      delete '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
+      # params = {
+      #   id: customer_subscription.id
+      # }
+            
+      delete "/api/v1/customer_subscriptions/#{customer_subscription.id}"
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
@@ -28,17 +26,11 @@ RSpec.describe 'delete customer subscription' do
   end
 
   context 'when customer subscription does not exist - sad path' do
-    xit 'returns a error message with status 400' do
+    it 'returns a error message with status 400' do
       
       expect(CustomerSubscription.count).to eq(0)
-
-      params = {
-        id: 999
-      }
       
-      headers = { 'CONTENT_TYPE' => 'application/json' }
-      
-      delete '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
+      delete "/api/v1/customer_subscriptions/999"
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
