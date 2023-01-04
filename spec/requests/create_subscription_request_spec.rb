@@ -45,8 +45,6 @@ RSpec.describe 'create customer subscription' do
       
       post '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
 
-      new_customer_subscription = JSON.parse(response.body, symbolize_names: true)
-
       expect(response).to be_successful
       expect(response.status).to eq(200)
 
@@ -70,8 +68,6 @@ RSpec.describe 'create customer subscription' do
         headers = { 'CONTENT_TYPE' => 'application/json' }
         
         post '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
-  
-        new_customer_subscription = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to_not be_successful
         expect(response.status).to eq(400)
@@ -90,8 +86,6 @@ RSpec.describe 'create customer subscription' do
         headers = { 'CONTENT_TYPE' => 'application/json' }
         
         post '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
-  
-        new_customer_subscription = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to_not be_successful
         expect(response.status).to eq(400)
