@@ -1,7 +1,11 @@
 class Api::V1::CustomerSubscriptionsController < ApplicationController
   def create
-   customer_subscription = CustomerSubscription.create!(customer_subscription_params)
-   render json: CustomerSubscriptionSerializer.new(customer_subscription)
+   customer_subscription = CustomerSubscription.new(customer_subscription_params)
+   if customer_subscription.save
+    render json: CustomerSubscriptionSerializer.new(customer_subscription)
+   else
+    render :json => { error: "No record found", status: 400 }, :status => :bad_request
+   end
   end
 
   private
