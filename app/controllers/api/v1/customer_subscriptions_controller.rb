@@ -1,6 +1,6 @@
 class Api::V1::CustomerSubscriptionsController < ApplicationController
   def create
-   customer_subscription = CustomerSubscription.new(customer_subscription_params)
+   customer_subscription = CustomerSubscription.find_or_initialize_by(customer_subscription_params)
    if customer_subscription.save
     render json: CustomerSubscriptionSerializer.new(customer_subscription)
    else
