@@ -4,7 +4,7 @@ This app is a Rails API for a subscription tea service.
 
 ### Built With
 
-* [![Rails][Rails.org]][Rails-url]
+[![Rails][Rails.org]][Rails-url]
 ## Getting Started
 ### (for Mac)
 ### Prerequisites
@@ -45,3 +45,38 @@ Before using the web application you will need to setup your databases locally b
 ```shell
 $ /take_home main $ rails db:{drop,create,migrate,seed}
 ```
+### Data Base Schema
+<img src="app/documentation/images/schema.png" width="700"><br>
+
+# Rest API's
+## Post Customer Subscription
+### Request
+
+POST '/api/v1/customer_subscriptions'
+
+## Delete Customer Subscription
+
+### Request
+
+DELETE "/api/v1/customer_subscriptions/#{customer_subscription.id}"
+
+## Get Customer Subscriptions 
+
+### Request
+
+GET "/api/v1/customer_subscriptions/#{customer.id}"
+
+
+### Contact
+- Thomas Hayes - [@thayes87](https://github.com/thayes87)<br>
+Project Link: [https://github.com/thayes87/take_home](https://github.com/thayes87/take_home)
+
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Rails.org]: https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white
+[Rails-url]: https://rubyonrails.org
