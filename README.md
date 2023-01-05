@@ -46,7 +46,8 @@ Before using the web application you will need to setup your databases locally b
 $ /take_home main $ rails db:{drop,create,migrate,seed}
 ```
 ### Data Base Schema
-<img src="app/documentation/images/schema.png" width="700"><br>
+
+<img src="app/documentation/images/schema.png" width="700">
 
 # Rest API's
 ## Post Customer Subscription
