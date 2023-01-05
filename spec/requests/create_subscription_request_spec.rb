@@ -87,6 +87,7 @@ RSpec.describe 'create customer subscription' do
         
         post '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
 
+
         expect(response).to_not be_successful
         expect(response.status).to eq(400)
       end
