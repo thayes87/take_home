@@ -13,14 +13,8 @@ RSpec.describe 'see all subscriptions for a specific customer' do
       customer_subscription_1 = CustomerSubscription.create!(customer_id: customer_2.id, subscription_id: subscription_1.id)
       customer_subscription_2 = CustomerSubscription.create!(customer_id: customer_2.id, subscription_id: subscription_2.id)
       customer_subscription_3 = CustomerSubscription.create!(customer_id: customer_1.id, subscription_id: subscription_3.id)
-
-      params = {
-        customer_id: customer_2.id,
-      }
       
-      headers = { 'CONTENT_TYPE' => 'application/json' }
-      
-      get '/api/v1/customer_subscriptions', headers: headers, params: JSON.generate(params)
+      get "/api/v1/customers/#{customer_2.id}/subscriptions"
 
       all_customer_subscription = JSON.parse(response.body, symbolize_names: true)
 

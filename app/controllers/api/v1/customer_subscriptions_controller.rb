@@ -9,15 +9,19 @@ class Api::V1::CustomerSubscriptionsController < ApplicationController
   end
   
   def destroy
-    customer_subscription = CustomerSubscription.find(params[:id])
+    customer_subscription = CustomerSubscription.find_by(id: params[:id])
     if customer_subscription.present?
       customer_subscription.destroy
       render :json => { status: 200 }
     else
       render :json => { error: "No record found", status: 400 }, :status => :bad_request
     end
-  rescue ActiveRecord::RecordNotFound
-    render :json => { error: "No record found", status: 400 }, :status => :bad_request
+  end
+
+  def index
+    customer = Customer.find(params[:customer_id])
+    customer_subscriptions = customer.subscriptions
+    render json: SubscriptionSerializer.new(customer_subscriptions)
   end
 
   private
