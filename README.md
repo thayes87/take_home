@@ -45,6 +45,12 @@ Before using the web application you will need to setup your databases locally b
 ```shell
 $ /take_home main $ rails db:{drop,create,migrate,seed}
 ```
+5. Run Bundle Exec Rspec to confirm 34 passing tests with 100% test coverage
+```
+bundle exec rspec
+```
+<img src="app/documentation/images/coverage.png" width="700">
+
 ### Data Base Schema
 
 <img src="app/documentation/images/schema.png" width="700">
@@ -55,19 +61,58 @@ $ /take_home main $ rails db:{drop,create,migrate,seed}
 
 POST '/api/v1/customer_subscriptions'
 
+### Successful Response
+```
+{
+    "data": {
+        "id": "1",
+        "type": "customer_subscription",
+        "attributes": {
+            "id": 1,
+            "customer_id": 1,
+            "subscription_id": 1
+        }
+    }
+}
+```
+
 ## Delete Customer Subscription
 
 ### Request
 
 DELETE "/api/v1/customer_subscriptions/#{customer_subscription.id}"
 
+### Successful Response
+```
+{
+    "status": 200
+}
+```
 ## Get Customer Subscriptions 
 
 ### Request
 
 GET "/api/v1/customer_subscriptions/#{customer.id}"
 
-
+### Successful Response
+```
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "subscription",
+            "attributes": {
+                "id": 1,
+                "title": "Lavendar weekly",
+                "price": 1.5,
+                "status": "active",
+                "frequency": 7,
+                "tea_id": 1
+            }
+        }
+    ]
+}
+```
 ### Contact
 - Thomas Hayes - [@thayes87](https://github.com/thayes87)<br>
 Project Link: [https://github.com/thayes87/take_home](https://github.com/thayes87/take_home)

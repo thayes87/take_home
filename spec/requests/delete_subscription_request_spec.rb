@@ -9,10 +9,6 @@ RSpec.describe 'delete customer subscription' do
       customer_subscription = CustomerSubscription.create!(customer_id: customer.id, subscription_id: subscription.id)
       
       expect(CustomerSubscription.count).to eq(1)
-
-      # params = {
-      #   id: customer_subscription.id
-      # }
             
       delete "/api/v1/customer_subscriptions/#{customer_subscription.id}"
 
