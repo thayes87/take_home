@@ -19,9 +19,13 @@ class Api::V1::CustomerSubscriptionsController < ApplicationController
   end
 
   def index
-    customer = Customer.find(params[:customer_id])
-    customer_subscriptions = customer.subscriptions
-    render json: SubscriptionSerializer.new(customer_subscriptions)
+    customer = Customer.find_by(id: params[:customer_id])
+    if customer.present?
+      customer_subscriptions = customer.subscriptions
+      render json: SubscriptionSerializer.new(customer_subscriptions)
+    else 
+      render :json => { error: "No record found", status: 400 }, :status => :bad_request
+    end
   end
 
   private
